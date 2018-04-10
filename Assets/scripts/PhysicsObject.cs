@@ -16,7 +16,6 @@ public class PhysicsObject : MonoBehaviour {
 	protected RaycastHit2D[] hitBuffer = new RaycastHit2D[16];
 	protected List<RaycastHit2D> hitBufferList = new List<RaycastHit2D> (16);
 
-
 	protected const float minMoveDistance = 0.001f;
 	protected const float shellRadius = 0.01f;
 
@@ -36,7 +35,7 @@ public class PhysicsObject : MonoBehaviour {
 	{
 		targetVelocity = Vector2.zero;
 		ComputeVelocity ();
-		Vector3 moving_vector = Vector3.MoveTowards (Camera.main.transform.position, transform.position, 3f * Time.deltaTime);
+		Vector3 moving_vector = Vector3.MoveTowards (Camera.main.transform.position, transform.position, 28f * Time.deltaTime);
 		Camera.main.transform.position = new Vector3 (moving_vector.x, moving_vector.y, -10);
 	}
 
@@ -66,7 +65,7 @@ public class PhysicsObject : MonoBehaviour {
 	}
 
 	void Movement(Vector2 move, bool yMovement)
-	{
+	{	
 		float distance = move.magnitude;
 
 		if (distance > minMoveDistance) 
@@ -106,4 +105,8 @@ public class PhysicsObject : MonoBehaviour {
 		rb2d.position = rb2d.position + move.normalized * distance;
 	}
 
+	protected virtual void SendAnimInfo () 
+	{
+		
+	}
 }

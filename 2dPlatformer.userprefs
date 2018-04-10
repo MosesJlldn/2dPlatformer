@@ -2,12 +2,13 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\scripts\Generation.cs">
     <Files>
-      <File FileName="Assets\scripts\Generation.cs" Line="43" Column="91" />
-      <File FileName="Assets\scripts\DiamondSquareAlg.cs" Line="21" Column="4" />
-      <File FileName="Assets\scripts\PhysicsObject.cs" Line="39" Column="1" />
-      <File FileName="Assets\scripts\PlayerPlatformerController.cs" Line="18" Column="3" />
-      <File FileName="Assets\scripts\Shooting.cs" Line="9" Column="1" />
+      <File FileName="Assets\scripts\Generation.cs" Line="70" Column="1" />
+      <File FileName="Assets\scripts\DiamondSquareAlg.cs" Line="19" Column="58" />
+      <File FileName="Assets\scripts\PhysicsObject.cs" Line="52" Column="9" />
+      <File FileName="Assets\scripts\PlayerPlatformerController.cs" Line="46" Column="49" />
+      <File FileName="Assets\scripts\Shooting.cs" Line="1" Column="1" />
       <File FileName="Assets\Mover.cs" Line="1" Column="1" />
+      <File FileName="Assets\scripts\EnemyScript.cs" Line="55" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

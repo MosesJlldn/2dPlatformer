@@ -5,8 +5,10 @@ using AssemblyCSharp;
 
 public class Generation : MonoBehaviour {
 
-	public Transform v1;
-	public Transform v2;
+	public Transform t1;
+	public Transform t2;
+	private Vector2 v1;
+	private Vector2 v2;
 	public GameObject parent;
 	public GameObject go;
 	public float roughness;
@@ -17,7 +19,9 @@ public class Generation : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+
+		v1 = t1.position;
+		v2 = t2.position;
 		allgrounds = new List<Transform> ();
 		createPlatforms ();
 	}
@@ -25,14 +29,13 @@ public class Generation : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		float distance = character.transform.position.x - v1.position.x;
+		float distance = character.transform.position.x - v1.x;
 
 		if (distance > 7) {
 
-			Vector3 pos = v2.position + new Vector3 (32, 0, 0);
+			Vector2 pos = v2 + new Vector2 (32, 0);
 			v1 = v2;
-			GameObject new_go = Instantiate (go, pos, Quaternion.identity) as GameObject;
-			v2 = new_go.transform;
+			v2 = pos; 
 			createPlatforms ();
 		}
 
@@ -40,7 +43,7 @@ public class Generation : MonoBehaviour {
 
 		foreach (Transform ground in allgrounds) {
 				
-			if (Vector2.Distance (char_pos, new Vector2 (ground.position.x, ground.position.y)) > 10) {
+			if (Vector2.Distance (char_pos, new Vector2 (ground.position.x, ground.position.y)) > 20) {
 				ground.gameObject.SetActive (false);
 			} else {
 				ground.gameObject.SetActive (true);
@@ -51,7 +54,9 @@ public class Generation : MonoBehaviour {
 	void createPlatforms () {
 
 		List<Vector2> points = new List <Vector2>();
-		DiamondSquareAlg.calculate (v1.position, v2.position, roughness, points);
+		DiamondSquareAlg.calculate (v1, v2, roughness, points);
+		points.Add (v1);
+		points.Add (v2);
 		points.Sort ((p1, p2) => p1.x.CompareTo(p2.x));
 
 		foreach (Vector2 point in points) {
