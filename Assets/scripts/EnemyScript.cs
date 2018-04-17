@@ -18,7 +18,7 @@ public class EnemyScript : PhysicsObject {
 
 		player = GameObject.FindGameObjectWithTag ("Player");
 		target = player.transform;
-		combatState += Search;
+		combatState = Search;
 	}
 	
 	// Update is called once per frame
@@ -28,35 +28,36 @@ public class EnemyScript : PhysicsObject {
 	}
 
 	void Attack () {
-
+		Debug.Log ("Attack");
 		if (Vector3.Distance (target.position, transform.position) > attackRange) {
 			
-			combatState += Search;
+			combatState = Search;
 		}
 	}
 
 	void Search () {
-
+		Debug.Log ("Search");
 		if (Vector3.Distance (target.position, transform.position) < viewRange) {
 
-			combatState += Move;
+			combatState = Move;
 		}
 	}
 
 	void Move () {
-
+		Debug.Log ("Move");
 		if (target.position.x < transform.position.x) {
-
+			Debug.Log ("+");
 			GetComponent<SpriteRenderer> ().flipX = true;
 			transform.position -= new Vector3 (speed * Time.deltaTime, 0);
 		} else {
+			Debug.Log ("+");
 			GetComponent<SpriteRenderer> ().flipX = false;
 			transform.position += new Vector3 (speed * Time.deltaTime, 0);
 		}
 
 		if (Vector3.Distance (transform.position, target.position) < attackRange) {
 
-			combatState += Attack;
+			combatState = Attack;
 		} 
 	}
 }
